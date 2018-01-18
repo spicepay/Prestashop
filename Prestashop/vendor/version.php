@@ -1,0 +1,3 @@
+<?php
+
+define('SPICEPAY_PRESTASHOP_EXTENSION_VERSION', '1.2.3');

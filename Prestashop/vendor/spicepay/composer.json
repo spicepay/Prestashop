@@ -1,0 +1,31 @@
+{
+  "name": "spicepay/spicepay-php",
+  "type": "library",
+  "description": "SpicePay library for PHP",
+  "version": "2.0.0",
+  "keywords": [
+    "spicepay",
+    "bitcoin",
+    "merchant"
+  ],
+  "homepage": "https://spicepay.com",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "SpicePay and contributors",
+      "homepage": "https://github.com/spicepay/spicepay-php/graphs/contributors"
+    }
+  ],
+  "require": {
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "SpicePay\\": "lib/"
+    }
+  }
+}
