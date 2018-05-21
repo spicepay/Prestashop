@@ -102,7 +102,7 @@ class Spicepay extends PaymentModule
 
         $this->tab = 'payments_gateways';
 
-        $this->version = '1.2.3';
+        $this->version = '1.2.4';
 
         $this->author = 'SpicePay.com';
 
@@ -112,7 +112,7 @@ class Spicepay extends PaymentModule
 
         $this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
 
-        $this->module_key = '1b837e1e56098e018df1dd08e79e8ab4';
+        $this->module_key = 'ce5162a8e18ab0861fb0e23ff2cc3426';
 
 
 
@@ -136,7 +136,7 @@ class Spicepay extends PaymentModule
 
                 // 'SPICEPAY_API_SECRET',
 
-                // 'SPICEPAY_RECEIVE_CURRENCY',
+                'SPICEPAY_RECEIVE_CURRENCY',
 
                 // 'SPICEPAY_TEST'
 
@@ -170,11 +170,11 @@ class Spicepay extends PaymentModule
 
 
 
-        // if (!empty($config['SPICEPAY_RECEIVE_CURRENCY'])) {
+        if (!empty($config['SPICEPAY_RECEIVE_CURRENCY'])) {
 
-        //     $this->receive_currency = $config['SPICEPAY_RECEIVE_CURRENCY'];
+            $this->receive_currency = $config['SPICEPAY_RECEIVE_CURRENCY'];
 
-        // }
+        }
 
 
 
@@ -406,7 +406,7 @@ class Spicepay extends PaymentModule
 
             // Configuration::deleteByName('SPICEPAY_API_SECRET') &&
 
-            // Configuration::deleteByName('SPICEPAY_RECEIVE_CURRENCY') &&
+            Configuration::deleteByName('SPICEPAY_RECEIVE_CURRENCY') &&
 
             // Configuration::deleteByName('SPICEPAY_TEST') &&
 
@@ -454,11 +454,11 @@ class Spicepay extends PaymentModule
 
 
 
-            // if (!Tools::getValue('SPICEPAY_RECEIVE_CURRENCY')) {
+            if (!Tools::getValue('SPICEPAY_RECEIVE_CURRENCY')) {
 
-            //     $this->postErrors[] = $this->l('Receive Currency is required.');
+                $this->postErrors[] = $this->l('Receive Currency is required.');
 
-            // }
+            }
 
 
 
@@ -522,7 +522,7 @@ class Spicepay extends PaymentModule
 
             // );
 
-            // Configuration::updateValue('SPICEPAY_RECEIVE_CURRENCY', Tools::getValue('SPICEPAY_RECEIVE_CURRENCY'));
+            Configuration::updateValue('SPICEPAY_RECEIVE_CURRENCY', Tools::getValue('SPICEPAY_RECEIVE_CURRENCY'));
 
             // Configuration::updateValue('SPICEPAY_TEST', Tools::getValue('SPICEPAY_TEST'));
 
@@ -762,55 +762,55 @@ class Spicepay extends PaymentModule
 
                     // ),
 
-                    // array(
+                    array(
 
-                    //     'type'     => 'select',
+                        'type'     => 'select',
 
-                    //     'label'    => $this->l('Receive Currency'),
+                        'label'    => $this->l('Receive Currency'),
 
-                    //     'name'     => 'SPICEPAY_RECEIVE_CURRENCY',
+                        'name'     => 'SPICEPAY_RECEIVE_CURRENCY',
 
-                    //     'desc'     => $this->l('Currency you want to receive at SpicePay.com. Please take a note what if you choose EUR or USD you will be asked to verify your business before making a withdrawal at SpicePay.'),
+                        'desc'     => $this->l('Currency you want to receive at SpicePay.com. Please take a note what if you choose EUR or USD you will be asked to verify your business before making a withdrawal at SpicePay.'),
 
-                    //     'required' => true,
+                        'required' => true,
 
-                    //     'options'  => array(
+                        'options'  => array(
 
-                    //         'query' => array(
+                            'query' => array(
 
-                    //             array(
+                                array(
 
-                    //                 'id_option' => 'btc',
+                                    'id_option' => 'gbp',
 
-                    //                 'name'      => 'Bitcoin (฿)'
+                                    'name'      => 'British Pound (£)'
 
-                    //             ),
+                                ),
 
-                    //             array(
+                                array(
 
-                    //                 'id_option' => 'eur',
+                                    'id_option' => 'eur',
 
-                    //                 'name'      => 'Euros (€)'
+                                    'name'      => 'Euros (€)'
 
-                    //             ),
+                                ),
 
-                    //             array(
+                                array(
 
-                    //                 'id_option' => 'usd',
+                                    'id_option' => 'usd',
 
-                    //                 'name'      => 'US Dollars ($)'
+                                    'name'      => 'US Dollars ($)'
 
-                    //             )
+                                )
 
-                    //         ),
+                            ),
 
-                    //         'id'    => 'id_option',
+                            'id'    => 'id_option',
 
-                    //         'name'  => 'name'
+                            'name'  => 'name'
 
-                    //     )
+                        )
 
-                    // ),
+                    ),
 
                     // array(
 
@@ -946,13 +946,13 @@ class Spicepay extends PaymentModule
 
             // )),
 
-            // 'SPICEPAY_RECEIVE_CURRENCY' => Tools::getValue(
+            'SPICEPAY_RECEIVE_CURRENCY' => Tools::getValue(
 
-            //     'SPICEPAY_RECEIVE_CURRENCY',
+                'SPICEPAY_RECEIVE_CURRENCY',
 
-            //     Configuration::get('SPICEPAY_RECEIVE_CURRENCY')
+                Configuration::get('SPICEPAY_RECEIVE_CURRENCY')
 
-            // ),
+            ),
 
             // 'SPICEPAY_TEST' => Tools::getValue(
 

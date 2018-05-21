@@ -148,6 +148,8 @@ class SpicepayRedirectModuleFrontController extends ModuleFrontController
 
           'api_key' => Configuration::get('SPICEPAY_API_KEY'),
 
+          'curr' => Configuration::get('SPICEPAY_RECEIVE_CURRENCY'),
+
           // 'api_secret' => Configuration::get('SPICEPAY_API_SECRET'),
 
           // 'environment' => (int)(Configuration::get('SPICEPAY_TEST')) == 1 ? 'sandbox' : 'live',
@@ -240,8 +242,14 @@ include(dirname(__FILE__).'/shop/config/config.inc.php');
 
 include(dirname(__FILE__).'/shop/header.php');
 
-
-
+$amount_curr="";
+if ($cgConfig['curr']=="gbp") {
+    $amount_curr="GBP";
+} elseif ($cgConfig['curr']=="eur") {
+    $amount_curr="EUR";
+} elseif ($cgConfig['curr']=="usd") {
+    $amount_curr="USD";
+}
 
 
 $form=<<<HTML
@@ -250,7 +258,7 @@ $form=<<<HTML
 
 <form action="https://www.spicepay.com/p.php" method="POST" id="form_submit">
 
-<input type="hidden" name="amountUSD" value="{$total}">
+<input type="hidden" name="amount{$amount_curr}" value="{$total}">
 
 <input type="hidden" name="orderId" value="{$cart->id}">
 
